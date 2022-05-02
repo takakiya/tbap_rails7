@@ -1,25 +1,34 @@
 # README
 
-①ウィンドウユーザはDockerfile の
+a-1
+ウィンドウユーザのみDockerfile の
 
 #RUN useradd -m username && \
 #echo "username:userpass" | chpasswd
 
-部分を変更する
+username部分を変更する(自分のwhoamiにあわせる)
 
-②docker-compose up -d
+a-2
+DB createを先にしておく（起動したときに赤くなった場合「create database」ボタンを押す）
+docker-compose run web rails db:create
+
+b-1:
+docker-compose up -d
 
 ※起動したら①部分は最初の状態に戻す
+※初回はsudoが必要かも
 
-③docker-compose exec --name username /bin/bash
-上記でコンテナにログインする
+b-2:
+docker-compose exec --name username /bin/bash
+上記設定したuserでコンテナにログインする
 
 ④終わるときはctr+c、ctr+dでコンテナから抜けて
-docker-compose stop
+docker-compose stop （通常こちらで言い）
 か
 docker-compose dowm
 
 をする
+※downした場合次のup時はaのユーザー情報を再度実行する
 
 注意＞
 ・rails new や generate するときはコンテナ内で上記ユーザーでやる

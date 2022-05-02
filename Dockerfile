@@ -10,6 +10,9 @@ COPY . /myapp
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
+# windowsユーザーは下の二行を自分のパソコンのアカウントに合わせる、pwはすきなものでいい
+#RUN useradd -m username && \
+#echo "username:userpass" | chpasswd
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 

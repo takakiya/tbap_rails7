@@ -11,6 +11,8 @@ username部分を変更する(自分のwhoamiにあわせる)
 a-2
 DB createを先にしておく（起動したときに赤くなった場合「create database」ボタンを押す）
 docker-compose run web rails db:create
+※imageがすでにあるとエラーになります
+※sudo chmod 666 logs/development.log をする
 
 b-1:
 docker-compose up -d

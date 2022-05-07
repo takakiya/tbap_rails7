@@ -19,11 +19,11 @@ docker-compose up -d
 ※初回はsudoが必要かも
 
 b-2:
-docker-compose exec --name username /bin/bash
+docker-compose exec --user username web /bin/bash
 上記設定したuserでコンテナにログインする
 
 ④終わるときはctr+c、ctr+dでコンテナから抜けて
-docker-compose stop （通常こちらで言い）
+docker-compose stop （通常こちらでよい）
 か
 docker-compose dowm
 

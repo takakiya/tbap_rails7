@@ -9,29 +9,44 @@ a-1
 username部分を変更する(自分のwhoamiにあわせる)
 
 a-2
-DB createを先にしておく（起動したときに赤くなった場合「create database」ボタンを押す）
-docker-compose run web rails db:create
+※winのみsudoがひつよう
+sudo docker-compose build --no-cache
 
-b-1:
+a-3
+DB createをする
+sudo docker-compose run web rails db:create
+
+b-1:(2回目以降はDockerfileの更新なければ以下から)
 docker-compose up -d
 
-※起動したら①部分は最初の状態に戻す
-※初回はsudoが必要かも
+※起動したらa-1部分は最初の状態に戻す
 
 b-2:
-docker-compose exec --name username /bin/bash
+docker-compose exec --user username /bin/bash
 上記設定したuserでコンテナにログインする
 
-④終わるときはctr+c、ctr+dでコンテナから抜けて
+④終わるときは ctr+c、ctr+d でコンテナから抜けて
 docker-compose stop （通常こちらで言い）
 か
 docker-compose dowm
 
 をする
-※downした場合次のup時はaのユーザー情報を再度実行する
 
 注意＞
 ・rails new や generate するときはコンテナ内で上記ユーザーでやる
+
+・テーブル作成時にログが書き込めない（パーミッション）
+適宜書き込み権限を与える
+sudo chmod 666 src/logs/development.log
+
+
+
+
+
+
+
+
+
 
 
 This README would normally document whatever steps are necessary to get the

@@ -90,4 +90,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # DNSリバインディング攻撃対策
+   config.hosts << ENV["AWS_ECS_RAILS7_HOST"]
 end

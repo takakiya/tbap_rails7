@@ -92,5 +92,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # DNSリバインディング攻撃対策
-   config.hosts << ENV["ECS_RAILS7_HOST"]
+   config.hosts << ENV["ECS_RAILS7_HOST_V"]
 end
